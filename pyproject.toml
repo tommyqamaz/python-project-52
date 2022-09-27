@@ -11,6 +11,12 @@ python = "^3.9"
 Django = "^4.1.1"
 
 
+[tool.poetry.group.dev.dependencies]
+django-extensions = "^3.2.1"
+ipython = "^8.5.0"
+black = "^22.8.0"
+flake8 = "^5.0.4"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
