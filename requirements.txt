@@ -1,6 +1,9 @@
 asgiref==3.5.2 ; python_version >= "3.9" and python_version < "4.0" \
     --hash=sha256:1d2880b792ae8757289136f1db2b7b99100ce959b2aa57fd69dab783d05afac4 \
     --hash=sha256:4a29362a6acebe09bf1d6640db38c1dc3d9217c68e6f9f6204d72667fc19a424
+dj-database-url==1.0.0 ; python_version >= "3.9" and python_version < "4.0" \
+    --hash=sha256:ccf3e8718f75ddd147a1e212fca88eecdaa721759ee48e38b485481c77bca3dc \
+    --hash=sha256:cd354a3b7a9136d78d64c17b2aec369e2ae5616fbca6bfbe435ef15bb372ce39
 django==4.1.1 ; python_version >= "3.9" and python_version < "4.0" \
     --hash=sha256:a153ffd5143bf26a877bfae2f4ec736ebd8924a46600ca089ad96b54a1d4e28e \
     --hash=sha256:acb21fac9275f9972d81c7caf5761a89ec3ea25fe74545dd26b8a48cb3a0203e
@@ -19,3 +22,6 @@ sqlparse==0.4.3 ; python_version >= "3.9" and python_version < "4.0" \
 tzdata==2022.4 ; python_version >= "3.9" and python_version < "4.0" and sys_platform == "win32" \
     --hash=sha256:74da81ecf2b3887c94e53fc1d466d4362aaf8b26fc87cda18f22004544694583 \
     --hash=sha256:ada9133fbd561e6ec3d1674d3fba50251636e918aa97bd59d63735bef5a513bb
+whitenoise==6.2.0 ; python_version >= "3.9" and python_version < "4.0" \
+    --hash=sha256:8e9c600a5c18bd17655ef668ad55b5edf6c24ce9bdca5bf607649ca4b1e8e2c2 \
+    --hash=sha256:8fa943c6d4cd9e27673b70c21a07b0aa120873901e099cd46cab40f7cc96d567
