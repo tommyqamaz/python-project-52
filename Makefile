@@ -30,3 +30,6 @@ lint:
 .PHONY: run
 run:
 	$(MANAGE) runserver
+
+run-g:
+	poetry run gunicorn task_manager.wsgi
