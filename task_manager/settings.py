@@ -106,7 +106,7 @@ if "DATABASE_URL" in os.environ:
         DATABASES["default"]["TEST"] = DATABASES["default"]
 
 # Password validation
-# https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
+# https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators # noqa: E501
 
 AUTH_PASSWORD_VALIDATORS = [
     {
