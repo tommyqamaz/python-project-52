@@ -29,7 +29,7 @@ lint:
 
 .PHONY: run
 run:
-	$(MANAGE) runserver
+	$(MANAGE) runserver 8001
 
 run-g:
 	poetry run gunicorn task_manager.wsgi
