@@ -34,4 +34,8 @@ run:
 run-g:
 	poetry run gunicorn task_manager.wsgi
 
-heroku: poetry export > requirements.txt && git push heroku main
+heroku:
+	poetry export > requirements.txt && git push heroku main
+
+test:
+	poetry run python manage.py test
