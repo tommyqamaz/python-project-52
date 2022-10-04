@@ -10,7 +10,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment: base_env
     strategy:
       matrix:
         python-version: [3.9.14]
@@ -22,10 +21,11 @@ jobs:
           python-version: ${{ matrix.python-version }}
           cache: 'pip'
           cache-dependency-path: 'poetry.lock'
-      - name: Check envs
+      - name: Create env file
         run: |
-          echo "1 $DJANGO_KEY"
-          echo "2 $base_env.DJANGO_KEY"
+          touch .env
+          echo DJANGO_KEY=${{ secrets.DJANGO_KEY }} >> .env
+          cat .env
       - name: Install dependencies
         run: |
           pip install poetry
