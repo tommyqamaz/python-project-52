@@ -22,6 +22,8 @@ jobs:
           cache: 'pip'
           cache-dependency-path: 'poetry.lock'
       - name: Install dependencies
+        env:
+          DJANGO_KEY: ${{ secrets.DJANGO_KEY }}
         run: |
           pip install poetry
           make setup
