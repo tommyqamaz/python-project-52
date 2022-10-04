@@ -9,7 +9,7 @@ setup: db-clean install migrate
 
 .PHONY: install
 install:
-	@poetry install
+	@poetry install --no-root
 
 .PHONY: db-clean
 db-clean:
@@ -34,4 +34,8 @@ run:
 run-g:
 	poetry run gunicorn task_manager.wsgi
 
-heroku: poetry export > requirements.txt && git push heroku main
+heroku:
+	poetry export > requirements.txt && git push heroku main
+
+test:
+	poetry run python manage.py test

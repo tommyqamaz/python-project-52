@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 IS_HEROKU = "DYNO" in os.environ
-
+# IS_CI = "CI" in os.environ
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
@@ -106,7 +106,7 @@ if "DATABASE_URL" in os.environ:
         DATABASES["default"]["TEST"] = DATABASES["default"]
 
 # Password validation
-# https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
+# https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators # noqa: E501
 
 AUTH_PASSWORD_VALIDATORS = [
     {
