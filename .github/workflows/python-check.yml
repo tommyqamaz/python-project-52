@@ -24,7 +24,7 @@ jobs:
       - name: Create env file
         run: |
           touch .env
-          echo "DJANGO_KEY=${{ secrets.DJANGO_KEY_ESCAPED }}"" >> .env
+          echo "DJANGO_KEY=${{ secrets.DJANGO_KEY_ESCAPED }}" >> .env
           cat .env
       - name: Install dependencies
         run: |
