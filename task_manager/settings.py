@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     "bootstrap4",
     "task_manager.users",
     "django_extensions",
+    "crispy_forms",
 ]
 
 MIDDLEWARE = [

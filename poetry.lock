@@ -144,6 +144,14 @@ beautifulsoup4 = ">=4.8.0"
 Django = ">=3.2"
 
 [[package]]
+name = "django-crispy-forms"
+version = "1.14.0"
+description = "Best way to have Django DRY forms"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[[package]]
 name = "django-extensions"
 version = "3.2.1"
 description = "Extensions for Django"
@@ -501,7 +509,7 @@ brotli = ["Brotli"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "1ae899d73ffb0416e4a330110ce5f0b78c51f83ce305dc269e42b2329ffea557"
+content-hash = "363a0633dd92d7cc6262fbcae020f903c2c5a8cf66f6c2881e159d414e9319ab"
 
 [metadata.files]
 appnope = [
@@ -572,6 +580,10 @@ Django = [
 django-bootstrap4 = [
     {file = "django-bootstrap4-22.2.tar.gz", hash = "sha256:57bcbce53530ffd57a1c8bda74c8f3b56c859e085fb1f52a0e3e3a4f982f0960"},
     {file = "django_bootstrap4-22.2-py3-none-any.whl", hash = "sha256:ad00ff90e6bd002155516b32047c40df15f533fac49da66d8882995adcb13552"},
+]
+django-crispy-forms = [
+    {file = "django-crispy-forms-1.14.0.tar.gz", hash = "sha256:35887b8851a931374dd697207a8f56c57a9c5cb9dbf0b9fa54314da5666cea5b"},
+    {file = "django_crispy_forms-1.14.0-py3-none-any.whl", hash = "sha256:bc4d2037f6de602d39c0bc452ac3029d1f5d65e88458872cc4dbc01c3a400604"},
 ]
 django-extensions = [
     {file = "django-extensions-3.2.1.tar.gz", hash = "sha256:2a4f4d757be2563cd1ff7cfdf2e57468f5f931cc88b23cf82ca75717aae504a4"},
