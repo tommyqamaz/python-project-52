@@ -51,7 +51,6 @@ INSTALLED_APPS = [
     "bootstrap4",
     "task_manager.users",
     "django_extensions",
-    "crispy_forms",
 ]
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
