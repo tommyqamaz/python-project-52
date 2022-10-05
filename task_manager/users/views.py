@@ -1,5 +1,8 @@
-from django.views.generic import TemplateView
+from django.views.generic import ListView
+from django.contrib.auth.models import User
 
 
-class UsersView(TemplateView):
-    template_name = "users/index.html"
+class UsersView(ListView):
+    model = User
+    context_object_name = "user_list"
+    template_name = "users/user_list.html"
