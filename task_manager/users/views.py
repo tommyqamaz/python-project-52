@@ -1,10 +1,15 @@
-from django.views.generic import ListView
 from django.contrib.auth.models import User
-
-from django.shortcuts import render, redirect
 from .forms import NewUserForm
-from django.contrib.auth import login
+
+from django.views.generic import ListView
+from django.contrib.auth.views import LoginView, LogoutView
+from django.views.generic.edit import CreateView
+
+from django.urls import reverse_lazy
+from django.contrib.messages.views import SuccessMessageMixin
+
 from django.contrib import messages
+from django.utils.translation import gettext_lazy as _
 
 
 class UsersView(ListView):
@@ -13,22 +18,20 @@ class UsersView(ListView):
     template_name = "users/user_list.html"
 
 
-def create(request):
-    if request.method == "POST":
-        form = NewUserForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            login(request, user)
-            messages.success(request, "Registration successful.")
-            return redirect("task_manager:index")
-        messages.error(request, "Unsuccessful registration. Invalid information.")
-    form = NewUserForm()
-    return render(
-        request=request,
-        template_name="users/register.html",
-        context={"register_form": form},
-    )
+class SignUpView(SuccessMessageMixin, CreateView):
+    template_name = "users/register.html"
+    success_url = reverse_lazy("/")
+    form_class = NewUserForm
+    success_message = "Your profile was created successfully"
 
 
-def login_user(request):
-    return redirect("task_manager:index")
+class LoginUserView(SuccessMessageMixin, LoginView):
+    template_name = "users/login.html"
+    success_message = _("Вы залогинены")
+
+
+class LogoutUserView(LogoutView):
+    def dispatch(self, request, *args, **kwargs):
+        response = super().dispatch(request, *args, **kwargs)
+        messages.add_message(request, messages.INFO, _("Вы разлогинены"))
+        return response

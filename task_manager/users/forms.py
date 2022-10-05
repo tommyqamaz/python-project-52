@@ -7,8 +7,8 @@ from django.contrib.auth.models import User
 
 
 class NewUserForm(UserCreationForm):
-    first_name = forms.CharField(required=True)
-    last_name = forms.CharField(required=True)
+    first_name = forms.CharField(max_length=30, required=True)
+    last_name = forms.CharField(max_length=30, required=True)
 
     class Meta:
         model = User
@@ -16,7 +16,6 @@ class NewUserForm(UserCreationForm):
 
     def save(self, commit=True):
         user = super(NewUserForm, self).save(commit=False)
-        # user.email = self.cleaned_data["email"]
         if commit:
             user.save()
         return user

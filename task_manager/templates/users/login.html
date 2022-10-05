@@ -5,14 +5,12 @@
 
 {% block content %}
 {% bootstrap_messages %}
-<h1 class="my-4">{% translate "Регистрация" %}</h1>
+<h1 class="my-4">{% translate "Вход" %}</h1>
 <form method="post" class="form">
     {% csrf_token %}
     {% bootstrap_form form %}
     {% buttons %}
-    <button type="submit" class="btn btn-primary">
-        {% translate "Зарегистрировать" %}
-    </button>
+    <input class="btn btn-primary" type="submit" value={% translate "Войти" %}>
     {% endbuttons %}
 </form>
 {% endblock %}
