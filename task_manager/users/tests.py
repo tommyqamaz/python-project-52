@@ -1,11 +1,12 @@
 from django.test import TestCase
-from django.contrib.auth import get_user_model
-from django.urls import reverse
+from .models import MyUser
+
+# from django.urls import reverse
 
 
 class UserTest(TestCase):
     def setUp(self):
-        self.user = get_user_model().objects.create_user(
+        self.user = MyUser.objects.create_user(
             first_name="Ivan",
             last_name="John",
             username="testuser",
