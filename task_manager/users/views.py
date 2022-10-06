@@ -20,9 +20,9 @@ class UsersView(ListView):
 
 class SignUpView(SuccessMessageMixin, CreateView):
     template_name = "users/register.html"
-    success_url = reverse_lazy("/")
+    success_url = reverse_lazy("login")
     form_class = NewUserForm
-    success_message = "Your profile was created successfully"
+    success_message = _("Ваш профиль успешно создан")
 
 
 class LoginUserView(SuccessMessageMixin, LoginView):

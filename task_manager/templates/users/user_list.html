@@ -3,15 +3,15 @@
 {% load i18n %}
 
 {% block content %}
-<h1 class="mt-5">Users here</h1>
+<h1 class="mt-5">{% translate "Зарегистрированные пользователи" %}</h1>
 {% if user_list %}
 <table class="table table-striped">
     <thead>
         <tr>
             <th scope="col">id</th>
-            <th scope="col">Имя пользователя</th>
-            <th scope="col">Полное имя</th>
-            <th scope="col">Дата создания</th>
+            <th scope="col">{% translate "Имя пользователя" %}</th>
+            <th scope="col">{% translate "Полное имя" %}</th>
+            <th scope="col">{% translate "Дата создания" %}</th>
         </tr>
     </thead>
     <tbody>
