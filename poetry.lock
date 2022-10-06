@@ -147,7 +147,7 @@ Django = ">=3.2"
 name = "django-extensions"
 version = "3.2.1"
 description = "Extensions for Django"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.6"
 
@@ -501,7 +501,7 @@ brotli = ["Brotli"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "1ae899d73ffb0416e4a330110ce5f0b78c51f83ce305dc269e42b2329ffea557"
+content-hash = "26a3e1c2c12cb79cdd013282af3cac3487b4b7baff8dfb9d10f81ea014cfc2dc"
 
 [metadata.files]
 appnope = [
