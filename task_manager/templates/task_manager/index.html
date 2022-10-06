@@ -1,8 +1,10 @@
 {% extends "task_manager/base.html" %}
 
 {% load i18n %}
+{% load bootstrap4 %}
 
 {% block content %}
+{% bootstrap_messages %}
 
 <h1 class="mt-5"> {% translate "Главная страница." %}</h1>
 {% if user.is_authenticated %}

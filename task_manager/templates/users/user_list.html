@@ -1,17 +1,21 @@
 {% extends "task_manager/base.html" %}
 
 {% load i18n %}
+{% load bootstrap4 %}
 
 {% block content %}
+{% bootstrap_messages %}
+
 <h1 class="mt-5">{% translate "Зарегистрированные пользователи" %}</h1>
 {% if user_list %}
 <table class="table table-striped">
     <thead>
         <tr>
-            <th scope="col">id</th>
+            <th scope="col">ID</th>
             <th scope="col">{% translate "Имя пользователя" %}</th>
             <th scope="col">{% translate "Полное имя" %}</th>
             <th scope="col">{% translate "Дата создания" %}</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -21,6 +25,11 @@
             <td>{{ user.username }}</td>
             <td>{{ user.get_full_name }}</td>
             <td>{{ user.date_joined }}</td>
+            <td>
+                <a href="{% url 'users:update_user' user.pk %}">{% translate 'Изменить' %}</a>
+                <br>
+                <a href="{% url 'users:delete_user' user.pk %}">{% translate 'Удалить' %}</a>
+            </td>
         </tr>
         {% endfor %}
     </tbody>
