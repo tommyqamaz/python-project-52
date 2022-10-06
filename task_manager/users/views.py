@@ -60,7 +60,7 @@ class UpdateUserView(
 
     def handle_no_permission(self):
         messages.error(
-            self.request, _("У вас нет прав для изменения другого пользователя.")
+            self.request, _("У Вас нет прав для изменения другого пользователя.")
         )
         return redirect("users:user_list")
 
@@ -80,6 +80,6 @@ class DeleteUserView(
 
     def handle_no_permission(self):
         messages.error(
-            self.request, _("У вас нет прав для изменения другого пользователя.")
+            self.request, _("У Вас нет прав для удаления другого пользователя.")
         )
         return redirect("users:user_list")
