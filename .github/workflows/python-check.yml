@@ -25,6 +25,7 @@ jobs:
         run: |
           touch .env
           echo "DJANGO_KEY=${{ secrets.DJANGO_KEY_ESCAPED }}" >> .env
+          echo "DATABASE_URL=sqlite:///db.sqlite3" >> .env
       - name: Install dependencies
         run: |
           pip install poetry
