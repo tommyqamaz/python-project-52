@@ -1,16 +1,14 @@
 from .forms import NewUserForm
-from django.contrib.auth.models import User
+from .models import MyUser
 
-from django.views.generic import ListView
 from django.contrib.auth.views import LoginView, LogoutView
-from django.views.generic.edit import CreateView
-from django.views.generic import TemplateView, ListView, DetailView
+from django.views.generic import ListView
 from django.views.generic import CreateView, UpdateView, DeleteView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import (
     LoginRequiredMixin,
     UserPassesTestMixin,
-    AccessMixin,
+    # AccessMixin,
 )
 
 from django.urls import reverse_lazy
@@ -20,7 +18,7 @@ from django.utils.translation import gettext_lazy as _
 
 
 class UsersView(ListView):
-    model = User
+    model = MyUser
     context_object_name = "user_list"
     template_name = "users/user_list.html"
 
@@ -47,7 +45,7 @@ class LogoutUserView(LogoutView):
 class UpdateUserView(
     LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, UpdateView
 ):
-    model = User
+    model = MyUser
     success_url = reverse_lazy("users:user_list")
     template_name = "users/update.html"
     form_class = NewUserForm
@@ -68,7 +66,7 @@ class UpdateUserView(
 class DeleteUserView(
     LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, DeleteView
 ):
-    model = User
+    model = MyUser
     success_url = reverse_lazy("users:user_list")
     template_name = "users/delete.html"
     success_message = _("Пользователь успешно удалён")

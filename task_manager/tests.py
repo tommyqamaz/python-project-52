@@ -1,10 +1,11 @@
 from django.test import TestCase
-from django.contrib.auth import get_user_model, authenticate
+from django.contrib.auth import authenticate
+from task_manager.users.models import MyUser
 
 
 class IndexTest(TestCase):
     def setUp(self):
-        self.user = get_user_model().objects.create_user(
+        self.user = MyUser.objects.create_user(
             username="test", password="12test12", first_name="bla", last_name="blabla"
         )
         self.user.save()
