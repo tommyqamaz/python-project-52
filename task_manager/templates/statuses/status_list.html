@@ -1,0 +1,42 @@
+{% extends "task_manager/base.html" %}
+
+{% load i18n %}
+{% load bootstrap4 %}
+
+{% block content %}
+<div class="mt-4">
+    {% bootstrap_messages %}
+
+    <h1 class="mt-1">{% translate "All statuses" %}</h1>
+
+    {% if status_list %}
+    <a href="{% url 'statuses:create_status' %}">{% translate 'Create status' %}</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">{% translate "Name" %}</th>
+                <th scope="col">{% translate "Created at" %}</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for status in status_list %}
+            <tr>
+                <th scope="row"> {{ status.id }}</th>
+                <td>{{ status.name }}</td>
+                <td>{{ user.created_at }}</td>
+                <td>
+                    <a href="{% url 'statuses:update_status' status.pk %}">{% translate 'Update' %}</a>
+                    <br>
+                    <a href="{% url 'statuses:delete_status' status.pk %}">{% translate 'Delete' %}</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>There are no statuses.<br><a href="{% url 'statuses:create_status' %}">{% translate 'Create status' %}</a></p>
+    {% endif %}
+    {% endblock %}
+</div>
