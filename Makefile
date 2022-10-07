@@ -41,4 +41,4 @@ test:
 	@$(MANAGE) test
 
 test-coverage:
-	poetry run coverage run --source='.' manage.py test
+	poetry run coverage run --source='.' manage.py test && poetry run coverage xml
