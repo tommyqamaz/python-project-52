@@ -2,8 +2,7 @@ from .forms import NewUserForm
 from .models import MyUser
 
 from django.contrib.auth.views import LoginView, LogoutView
-from django.views.generic import ListView
-from django.views.generic import CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import (
     LoginRequiredMixin,

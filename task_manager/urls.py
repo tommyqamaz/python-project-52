@@ -11,6 +11,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", views.IndexView.as_view(), name="index"),
     path("users/", include("task_manager.users.urls"), name="users"),
+    path("statuses/", include("task_manager.statuses.urls"), name="statuses"),
     path("login/", LoginUserView.as_view(), name="login"),
     path("logout/", LogoutUserView.as_view(), name="logout"),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

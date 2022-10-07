@@ -4,13 +4,13 @@
 
 {% block content %}
 {% bootstrap_messages %}
-<h1 class="my-4">{% translate "Изменение пользователя" %}</h1>
+<h1 class="my-4">{% translate "Update user" %}</h1>
 <form method="post" class="form">
     {% csrf_token %}
     {% bootstrap_form form %}
     {% buttons %}
     <button type="submit" class="btn btn-primary">
-        {% translate "Изменить" %}
+        {% translate "Update" %}
     </button>
     {% endbuttons %}
 </form>

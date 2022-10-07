@@ -1,0 +1,24 @@
+{% extends "task_manager/base.html" %}
+
+{% load bootstrap4 %}
+{% load i18n %}
+
+{% block title %}{% trans 'Registration' %}{% endblock %}
+
+
+{% block content %}
+<div class="container" style="width: 60%; color: black">
+    <div class="card bg-light my-5">
+        <div class="card-header">
+            <h3>{% trans 'Status creation' %}</h3>
+        </div>
+        <div class="card-body">
+            <form class="form" method="post">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                <button class="btn btn-primary" type="submit">{% trans 'Create' %}</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
