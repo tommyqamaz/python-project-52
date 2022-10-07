@@ -37,6 +37,7 @@ else:
 INSTALLED_APPS = [
     "task_manager",
     "task_manager.users",
+    "task_manager.statuses",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -148,7 +149,7 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
-LOGIN_REDIRECT_URL = "users:user_list"
+LOGIN_REDIRECT_URL = "index"
 LOGOUT_REDIRECT_URL = "index"
 
 

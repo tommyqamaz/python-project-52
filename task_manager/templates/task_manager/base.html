@@ -18,7 +18,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Менеджер задач</title>
+    <title>{% translate "Task manager" %}</title>
 </head>
 {% endblock %}
 
@@ -27,8 +27,8 @@
 <body class="d-flex flex-column h-100">
     <header>
         <!-- Fixed navbar -->
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-            <a class="navbar-brand" href="{% url 'index' %}">Менеджер задач</a>
+        <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
+            <a class="navbar-brand" href="{% url 'index' %}">{% translate "Task manager" %}</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -36,27 +36,32 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <!-- need to change to relative link -->
-                        <a class="nav-link" href="{% url 'users:user_list' %}">Пользователи</a>
+                        <a class="nav-link" href="{% url 'users:user_list' %}">{% translate "Users" %}</a>
                     </li>
+                    {% if not user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'users:user_list' %}">{% translate "Statuses" %}</a>
+                    </li>
+                    {% endif %}
                 </ul>
             </div>
             <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
                 <ul class="navbar-nav text-right">
                     {% if not user.is_authenticated %}
                     <li class="nav-item active ">
-                        <a class="nav-link" href="{% url 'login' %}">Войти</a>
+                        <a class="nav-link" href="{% url 'login' %}">{% translate "Log in" %}</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'users:create_user' %}">Регистрация</a>
+                        <a class="nav-link" href="{% url 'users:create_user' %}">{% translate "Sign up" %}</a>
                     </li>
                     {% else %}
                     <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Вы вошли как
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">
+                            {% translate "Logged in as" %}
                             {{user.username }}</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'logout' %}">Выйти</a>
+                        <a class="nav-link" href="{% url 'logout' %}">{% translate "Log out" %}</a>
                     </li>
                     {% endif %}
                 </ul>
@@ -82,13 +87,5 @@
 
         </div>
     </main>
-
-    {% block footer %}
-    <footer class="footer mt-auto py-3">
-        <div class="container">
-            <span class="text-muted">Place sticky footer content here.</span>
-        </div>
-    </footer>
-    {% endblock %}
 
 </html>
