@@ -1,94 +1,70 @@
-from .models import MyUser
-from django.test import TestCase, Client
+from django.contrib.auth import get_user_model
+from django.test import TestCase
+from django.urls import reverse
 
-# from django.urls import reverse
 
+class CustomUserTestCase(TestCase):
 
-class UserTest(TestCase):
+    fixtures = ["user.json"]
+
     def setUp(self):
-        self.user = MyUser.objects.create_user(
-            first_name="Ivan",
-            last_name="John",
-            username="testuser",
-            email="test@email.com",
-            password="secret",
-        )
+        user_logged = get_user_model().objects.first()
+        self.client.force_login(user_logged)
 
-    def test_availability(self):
-        response = self.client.get("/users/")
+    def test_users_list(self):
+        response = self.client.get(reverse("users:user_list"))
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, "users/user_list.html")
+        self.assertTemplateUsed(response, template_name="users/user_list.html")
 
-
-class RegisterCase(TestCase):
-    def test_register(self):
-        c = Client()
-        response = c.post(
-            "/users/create",
-            {
-                "first_name": "test",
-                "last_name": "test",
-                "username": "test",
-                "password1": "test",
-                "password2": "test",
-            },
-        )
+    def test_user_add(self):
+        response = self.client.get(reverse("users:create_user"))
         self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, template_name="users/register.html")
 
-    def test_login(self):
-        c = Client()
-        c.post(
-            "/users/create",
-            {
-                "first_name": "test",
-                "last_name": "test",
-                "username": "test",
-                "password1": "test",
-                "password2": "test",
-            },
-        )
-        response = c.post("/login/", {"username": "test", "password": "test"})
+        user_add = {
+            "first_name": "user2_first_name",
+            "last_name": "user2_last_name",
+            "username": "user2_username",
+            "password1": "Nx7sDQ9D",
+            "password2": "Nx7sDQ9D",
+        }
+        response = self.client.post(reverse("users:create_user"), user_add)
+        self.assertEqual(response.status_code, 302)
+        # self.assertRedirects(response, reverse("login"))
+
+        user = get_user_model().objects.get(username=user_add["username"])
+        self.assertEqual(user.username, "user2_username")
+        self.assertEqual(get_user_model().objects.count(), 2)
+
+    def test_user_update(self):
+        user = get_user_model().objects.first()
+        response = self.client.get(reverse("users:update_user", args=[user.pk]))
         self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, template_name="users/update.html")
 
+        user_update_info = {
+            "first_name": "user3_first_name",
+            "last_name": "user3_last_name",
+            "username": "user3_username",
+            "password1": "Nx7sDQ9D3",
+            "password2": "Nx7sDQ9D3",
+        }
+        response = self.client.post(
+            reverse("users:update_user", args=[user.pk]), user_update_info
+        )
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, reverse("users:user_list"))
 
-# class UpdateDeleteCase(TestCase):
-#     def setUp(self):
-#         self.credentials = {"username": "testuser", "password": "secret"}
-#         MyUser.objects.create_user(**self.credentials)
+        user_updated = get_user_model().objects.first()
+        self.assertEqual(user_updated.first_name, "user3_first_name")
+        self.assertTrue(user_updated.check_password("Nx7sDQ9D3"))
 
-#     def test_update(self):
-#         response = self.client.post(
-#             "/login/",
-#             self.credentials,
-#             follow=True,
-#         )
-#         self.assertTrue(response.context["user"].is_active)
-#         response = self.client.post(
-#             "/users/1/update/",
-#             {
-#                 "first_name": "test",
-#                 "last_name": "test",
-#                 "username": "test",
-#                 "password1": "test",
-#                 "password2": "test",
-#             },
-#         )
-#         self.assertEqual(response.status_code, 200)
-#         response = self.client.post(
-#             "/login/",
-#             {"username": "test", "password": "test"},
-#         )
+    def test_user_delete(self):
+        user = get_user_model().objects.first()
+        response = self.client.get(reverse("users:delete_user", args=[user.pk]))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, template_name="users/delete.html")
 
-#         self.assertEqual(response.status_code, 200)
-#         self.assertEqual(response.url, reverse("home"))
-
-#     def test_delete(self):
-#         response = self.client.post("/login/", self.credentials, follow=True)
-#         self.assertTrue(response.context["user"].is_active)
-#         response = self.client.post("/users/1/delete/")
-#         self.assertEqual(response.status_code, 302)
-#         self.assertEqual(response.url, reverse("users"))
-#         response = self.client.post(
-#             "/login/", {"username": "testuser", "password": "secret"}
-#         )
-#         self.assertEqual(response.status_code, 200)
+        response = self.client.post(reverse("users:delete_user", args=[user.pk]))
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(get_user_model().objects.count(), 0)
