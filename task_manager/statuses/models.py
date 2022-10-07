@@ -3,7 +3,7 @@ from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
 class Status(models.Model):
-    name = models.CharField(max_length=30)
+    name = models.CharField(max_length=30, unique=True)
     created_at = models.DateTimeField(_("Дата создания"), auto_now_add=True)
 
     class Meta(object):
