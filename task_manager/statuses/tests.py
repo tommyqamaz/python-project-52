@@ -18,11 +18,11 @@ class StatusesTest(TestCase):
 
     def test_create_status(self):
         response = self.client.post(
-            reverse("statuses:create_status"), {"name": "test_status"}
+            reverse("statuses:create_status"), {"name": "test_status228"}
         )
         self.assertEqual(response.status_code, 302)
         self.assertEqual(Status.objects.count(), 2)
-        self.assertEqual(Status.objects.last().name, "test_status")
+        self.assertEqual(Status.objects.last().name, "test_status228")
 
     def test_update_status_unauthorized(self):
         response = self.client.post(
@@ -35,7 +35,7 @@ class StatusesTest(TestCase):
         self.assertEqual(self.status.name, "test11")
 
     def test_update_status_authorized(self):
-        status = Status.objects.create(name="test11")
+        status = Status.objects.create(name="test111")
         self.client.force_login(self.user)
 
         response = self.client.get(
