@@ -1,7 +1,7 @@
 [
     {
         "model": "users.myuser",
-        "pk": 71,
+        "pk": 777,
         "fields": {
             "password": "password_test",
             "last_login": null,
@@ -12,7 +12,7 @@
             "email": "",
             "is_staff": false,
             "is_active": true,
-            "created_at": "2022-07-02T03:50:30.162Z",
+            "created_at": "2022-10-02T09:12:42.162Z",
             "groups": [],
             "user_permissions": []
         }
