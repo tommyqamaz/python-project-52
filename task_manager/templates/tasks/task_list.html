@@ -1,0 +1,48 @@
+{% extends "task_manager/base.html" %}
+
+{% load i18n %}
+{% load bootstrap4 %}
+
+{% block content %}
+<div class="mt-4">
+    {% bootstrap_messages %}
+
+    <h1 class="mt-1">{% translate "Tasks" %}</h1>
+    <a href="{% url 'tasks:create_task' %}">{% translate 'Create task' %}</a>
+    {% if task_list %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">{% translate "Name" %}</th>
+                <th scope="col">{% translate "Author" %}</th>
+                <th scope="col">{% translate "Status" %}</th>
+                <th scope="col">{% translate "Executor" %}</th>
+                <th scope="col">{% translate "Created at" %}</th>
+                <th scope="col"></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for task in task_list %}
+            <tr>
+                <th scope="row"> {{ task.id }}</th>
+                <td><a href="{% url 'tasks:{{ task.id }}' %}">{{ task.name }}</a></td>
+                <td>{{ task.author }}</td>
+                <td>{{ task.status }}</td>
+                <td>{{ task.executor }}</td>
+                <td>{{ task.created_at }}</td>
+                <td>
+                    <a href="{% url 'tasks:update_task' user.pk %}">{% translate 'Update' %}</a>
+                    <br>
+                    <a href="{% url 'users:delete_task' user.pk %}">{% translate 'Delete' %}</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>There are no tasks.</p>
+    {% endif %}
+    {% endblock %}
+</div>
