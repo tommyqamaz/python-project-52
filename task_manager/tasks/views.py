@@ -50,7 +50,7 @@ class DeleteTaskView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
 class UpdateTaskView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Task
     success_url = reverse_lazy("tasks:task_list")
-    template_name = "statuses/update.html"
+    template_name = "tasks/update.html"
     form_class = CreateTaskForm
     success_message = _("Task updated successfully")
     login_url = reverse_lazy("tasks:task_list")
