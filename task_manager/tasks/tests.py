@@ -102,9 +102,9 @@ class TaskTest(TestCase):
 
         self.assertEqual(task.executor.pk, new_user.pk)
 
-    # def test_detail_task(self):
-    #     response = self.client.get(
-    #         reverse("tasks:detail_task", kwargs={"pk": self.task.pk})
-    #     )
-    #     self.assertEqual(response.status_code, 200)
-    #     self.assertTemplateUsed(response, template_name="tasks/detail.html")
+    def test_detail_task(self):
+        response = self.client.get(
+            reverse("tasks:detail_task", kwargs={"pk": self.task.pk})
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, template_name="tasks/detail.html")

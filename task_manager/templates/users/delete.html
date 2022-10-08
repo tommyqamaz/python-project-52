@@ -4,15 +4,23 @@
 
 {% block content %}
 {% bootstrap_messages %}
+<div class="container" style="width: 60%; color: black">
+    <div class="card bg-light my-5">
+        <div class="card-header">
+            <h1 class="my-4">{% translate "User deletion" %}</h1>
+        </div>
+        <div class="card-body">
+            <form method="post">{% csrf_token %}
+                <p>{% translate "Are you sure want to delete user" %} "{{ object.get_full_name }}"?</p>
+                {% bootstrap_form form %}
+                {% buttons %}
+                <button type="submit" class="btn btn-danger">
+                    {% translate "Yes, exactly" %}
+                </button>
+                {% endbuttons %}
+            </form>
+        </div>
 
-<h1 class="my-4">{% translate "Users deletion" %}</h1>
-<form method="post">{% csrf_token %}
-    <p>{% translate "Are you sure want to delete?" %} {{ object.first_name }} {{ object.last_name }}?</p>
-    {% bootstrap_form form %}
-    {% buttons %}
-    <button type="submit" class="btn btn-danger">
-        {% translate "Yes, exactly" %}
-    </button>
-    {% endbuttons %}
-</form>
+    </div>
+</div>
 {% endblock %}
