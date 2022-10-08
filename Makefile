@@ -1,4 +1,6 @@
 MANAGE := poetry run python manage.py
+PK?=1
+TEST_APP?=task_manager
 
 .PHONY: test
 test:
@@ -32,13 +34,17 @@ run:
 	$(MANAGE) runserver 8001
 
 run-g:
-	poetry run gunicorn task_manager.wsgi
+	@poetry run gunicorn task_manager.wsgi
 
 heroku:
-	poetry export > requirements.txt && git push heroku main
-
+	@poetry export > requirements.txt && git push heroku main
+	
+.PHONY: test
 test:
-	@$(MANAGE) test
+	@$(MANAGE) test $(TEST_APP)
 
 test-coverage:
-	poetry run coverage run --source='.' manage.py test && poetry run coverage xml
+	@poetry run coverage run --source='.' manage.py test && poetry run coverage xml
+
+create-user:
+	@poetry run python manage.py dumpdata users.MyUser --pk $(PK) --indent 4 > user.json
