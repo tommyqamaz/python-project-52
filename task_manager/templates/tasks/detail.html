@@ -1,0 +1,48 @@
+{% extends 'task_manager/base.html' %}
+
+{% load bootstrap4 %}
+{% load i18n %}
+
+{% block content %}
+<div class="container wrapper flex-grow-1">
+
+    <h1 class="my-4">{% translate "Task details" %}</h1>
+    <div class="card">
+        <div class="card-header bg-secondary text-white">
+            <h2>{{ task.name }}</h2>
+        </div>
+        <div class="card-body bg-light">
+            <p>{{ task.description }}</p>
+            <hr>
+            <div class="container">
+                <div class="row p-1">
+                    <div class="col">{% translate "Author" %}</div>
+                    <div class="col">{{ task.author }}</div>
+                </div>
+                <div class="row p-1">
+                    <div class="col">{% translate "executor" %}</div>
+                    <div class="col">{{ task.executor }}</div>
+                </div>
+                <div class="row p-1">
+                    <div class="col">{% translate "Status" %}</div>
+                    <div class="col">{{ task.status }}</div>
+                </div>
+                <div class="row p-1">
+                    <div class="col">{% translate "Creation date" %}</div>
+                    <div class="col">{{ task.created_at|date:"d.m.Y H:i:s" }}</div>
+                </div>
+
+
+                <div class="row p-1 mt-3">
+                    <button onclick="location.href='{% url 'tasks:update_task' task.pk %}'" class="btn btn-dark ml-3">
+                        {% translate "Update" %}
+                    </button>
+                    <button onclick="location.href='{% url 'tasks:delete_task' task.pk %}'" class="btn btn-danger ml-3">
+                        {% translate "Delete" %}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
