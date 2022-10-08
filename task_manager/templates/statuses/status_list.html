@@ -8,9 +8,8 @@
     {% bootstrap_messages %}
 
     <h1 class="mt-1">{% translate "All statuses" %}</h1>
-
-    {% if status_list %}
     <a href="{% url 'statuses:create_status' %}">{% translate 'Create status' %}</a>
+    {% if status_list %}
     <table class="table table-striped">
         <thead>
             <tr>
