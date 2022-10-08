@@ -27,7 +27,7 @@
             {% for task in task_list %}
             <tr>
                 <th scope="row"> {{ task.id }}</th>
-                <td><a href="{% url 'tasks:{{ task.id }}' %}">{{ task.name }}</a></td>
+                <td><a href="#">{{ task.name }}</a></td>
                 <td>{{ task.author }}</td>
                 <td>{{ task.status }}</td>
                 <td>{{ task.executor }}</td>
@@ -35,7 +35,7 @@
                 <td>
                     <a href="{% url 'tasks:update_task' user.pk %}">{% translate 'Update' %}</a>
                     <br>
-                    <a href="{% url 'users:delete_task' user.pk %}">{% translate 'Delete' %}</a>
+                    <a href="{% url 'tasks:delete_task' user.pk %}">{% translate 'Delete' %}</a>
                 </td>
             </tr>
             {% endfor %}
