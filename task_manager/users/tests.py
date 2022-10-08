@@ -20,7 +20,7 @@ class CustomUserTestCase(TestCase):
         response = self.client.get(reverse("users:create_user"))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, template_name="users/register.html")
-
+        self.assertEqual(get_user_model().objects.count(), 1)
         user_add = {
             "first_name": "user2_first_name",
             "last_name": "user2_last_name",
