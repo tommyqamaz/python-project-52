@@ -14,7 +14,7 @@ class Task(models.Model):
     name = models.CharField(max_length=40, unique=True)
     description = models.CharField(max_length=256)
     executor = models.ForeignKey(
-        MyUser, on_delete=models.PROTECT, null=False, related_name="executor"
+        MyUser, on_delete=models.PROTECT, null=True, related_name="executor"
     )
     status = models.ForeignKey(Status, on_delete=models.PROTECT, null=False)
 
