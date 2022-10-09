@@ -16,7 +16,7 @@ class Task(models.Model):
     created_at = models.DateTimeField(_("Creation date"), auto_now_add=True)
 
     name = models.CharField(_("Name"), max_length=40, unique=True)
-    description = models.CharField(max_length=256)
+    description = models.CharField(_("Description"), max_length=256)
     executor = models.ForeignKey(
         MyUser,
         verbose_name=_("Executor"),

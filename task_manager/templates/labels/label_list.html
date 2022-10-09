@@ -24,7 +24,7 @@
             <tr>
                 <th scope="row"> {{ label.id }}</th>
                 <td>{{ label.name }}</td>
-                <td>{{ label.created_at }}</td>
+                <td>{{ label.created_at|date:"d.m.Y H:i" }}</td>
                 <td>
                     <a href="{% url 'labels:update_label' label.pk %}">{% translate 'Update' %}</a>
                     <br>

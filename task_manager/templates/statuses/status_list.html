@@ -24,7 +24,7 @@
             <tr>
                 <th scope="row"> {{ status.id }}</th>
                 <td>{{ status.name }}</td>
-                <td>{{ status.created_at }}</td>
+                <td>{{ status.created_at|date:"d.m.Y H:i" }}</td>
                 <td>
                     <a href="{% url 'statuses:update_status' status.pk %}">{% translate 'Update' %}</a>
                     <br>
