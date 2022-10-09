@@ -43,6 +43,9 @@
                         <a class="nav-link" href="{% url 'statuses:status_list' %}">{% translate "Statuses" %}</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'labels:label_list' %}">{% translate "Labels" %}</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{% url 'tasks:task_list' %}">{% translate "Tasks" %}</a>
                     </li>
                     {% endif %}
