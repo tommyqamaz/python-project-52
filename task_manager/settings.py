@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "task_manager.users",
     "task_manager.statuses",
     "task_manager.tasks",
+    "task_manager.labels",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -92,16 +93,6 @@ MAX_CONN_AGE = 600
 DATABASES = {
     "default": db_config,
 }
-
-# if "DATABASE_URL" in os.environ:
-#     # Configure Django for DATABASE_URL environment variable.
-#     DATABASES["default"] = dj_database_url.config(
-#         conn_max_age=MAX_CONN_AGE, ssl_require=True
-#     )
-
-#     # Enable test database if found in CI environment.
-#     if "CI" in os.environ:
-#         DATABASES["default"]["TEST"] = DATABASES["default"]
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators # noqa: E501
