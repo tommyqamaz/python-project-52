@@ -26,20 +26,20 @@ class SignUpView(SuccessMessageMixin, CreateView):
     template_name = "users/register.html"
     success_url = reverse_lazy("login")
     form_class = NewUserForm
-    success_message = _("Ваш профиль успешно создан")
+    success_message = _("Your profile was successfully created")
 
 
 class LoginUserView(SuccessMessageMixin, LoginView):
     template_name = "users/login.html"
     redirect_authenticated_user = True
     success_url = reverse_lazy("index")
-    success_message = _("Вы залогинены")
+    success_message = _("You are logged in")
 
 
 class LogoutUserView(LogoutView):
     def dispatch(self, request, *args, **kwargs):
         response = super().dispatch(request, *args, **kwargs)
-        messages.add_message(request, messages.INFO, _("Вы разлогинены"))
+        messages.add_message(request, messages.INFO, _("You are logged out"))
         return response
 
 
@@ -50,7 +50,7 @@ class UpdateUserView(
     success_url = reverse_lazy("users:user_list")
     template_name = "users/update.html"
     form_class = NewUserForm
-    success_message = _("Пользователь успешно изменён")
+    success_message = _("The user has been successfully updated")
     login_url = reverse_lazy("login")
     redirect_field_name = None
 
@@ -59,7 +59,7 @@ class UpdateUserView(
 
     def handle_no_permission(self):
         messages.error(
-            self.request, _("У Вас нет прав для изменения другого пользователя.")
+            self.request, _("You don't have the rights to change another user")
         )
         return redirect("users:user_list")
 
@@ -70,7 +70,7 @@ class DeleteUserView(
     model = MyUser
     success_url = reverse_lazy("users:user_list")
     template_name = "users/delete.html"
-    success_message = _("Пользователь успешно удалён")
+    success_message = _("The user has been successfully deleted")
     login_url = reverse_lazy("login")
     redirect_field_name = None
 
@@ -79,6 +79,6 @@ class DeleteUserView(
 
     def handle_no_permission(self):
         messages.error(
-            self.request, _("У Вас нет прав для удаления другого пользователя.")
+            self.request, _("You don't have the rights to delete another user")
         )
         return redirect("users:user_list")

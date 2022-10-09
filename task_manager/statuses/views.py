@@ -19,7 +19,7 @@ class CreateStatusView(SuccessMessageMixin, CreateView):
     template_name = "statuses/create.html"
     success_url = reverse_lazy("index")
     form_class = CreateStatusForm
-    success_message = _("Статус успешно создан")
+    success_message = _("Status created successfully")
 
     # change dublication in templates and add translate in views
     # def get_context_data(self, **kwargs):
@@ -34,7 +34,7 @@ class UpdateStatusView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     success_url = reverse_lazy("statuses:status_list")
     template_name = "statuses/update.html"
     form_class = CreateStatusForm
-    success_message = _("Статус успешно изменён")
+    success_message = _("Status updated successfully")
     login_url = reverse_lazy("statuses:status_list")
     redirect_field_name = None
 
@@ -43,6 +43,6 @@ class DeleteStatusView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     model = Status
     success_url = reverse_lazy("statuses:status_list")
     template_name = "statuses/delete.html"
-    success_message = _("Статус успешно удалён")
+    success_message = _("Status deleted successfully")
     login_url = reverse_lazy("login")
     redirect_field_name = None

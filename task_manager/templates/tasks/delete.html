@@ -11,7 +11,7 @@
         </div>
         <div class="card-body">
             <form method="post">{% csrf_token %}
-                <p>{% translate "Are you sure want to delete task" %} "{{ object.name }}"?</p>
+                <p>{% translate "Are you sure want to delete task?" %} "{{ object.name }}"?</p>
                 {% bootstrap_form form %}
                 {% buttons %}
                 <button type="submit" class="btn btn-danger">

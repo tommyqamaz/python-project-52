@@ -10,11 +10,11 @@ class NewUserForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields["password1"].help_text = _(
-            "<ul><li>Ваш пароль должен содержать как минимум 3 символа.</li></ul>"
+            "<ul><li>Your password should contain at least 3 symbols.</li></ul>"
         )
 
-    first_name = forms.CharField(max_length=30, required=True, label=_("Имя"))
-    last_name = forms.CharField(max_length=30, required=True, label=_("Фамилия"))
+    first_name = forms.CharField(max_length=30, required=True, label=_("First name"))
+    last_name = forms.CharField(max_length=30, required=True, label=_("Last name"))
 
     class Meta:
         model = MyUser
