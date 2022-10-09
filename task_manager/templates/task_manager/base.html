@@ -54,11 +54,13 @@
             <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
                 <ul class="navbar-nav text-right">
                     {% if not user.is_authenticated %}
-                    <li class="nav-item active ">
-                        <a class="nav-link" href="{% url 'login' %}">{% translate "Log in" %}</a>
+                    <!--login-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">{% translate 'Log in' %}</a>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'users:create_user' %}">{% translate "Sign up" %}</a>
+                    <!--users:create-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'users:create_user' %}">{% translate 'Sign up' %}</a>
                     </li>
                     {% else %}
                     <li class="nav-item">

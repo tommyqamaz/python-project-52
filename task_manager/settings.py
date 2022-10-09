@@ -19,8 +19,7 @@ IS_CI = "CI" in os.environ
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "9c-p5$m-inf1236t4s9f3x7u2q#^o-w9j1%4_o*&r6$*!s547w"
-
+SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 if not IS_HEROKU:
     DEBUG = True
