@@ -5,3 +5,5 @@ db.sqlite3
 staticfiles
 .DS_Store
 .pytest_cache
+.coverage
+coverage.*

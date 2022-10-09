@@ -2,6 +2,7 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv
 import dj_database_url
+import rollbar
 
 
 load_dotenv()
@@ -61,6 +62,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django.middleware.locale.LocaleMiddleware",
+    "rollbar.contrib.django.middleware.RollbarNotifierMiddleware",
 ]
 
 ROOT_URLCONF = "task_manager.urls"
@@ -149,3 +151,11 @@ AUTH_USER_MODEL = "users.MyUser"
 
 
 LOCALE_PATHS = (os.path.join(BASE_DIR, "locale"),)
+
+ROLLBAR = {
+    "access_token": os.environ["ROLLBAR_TOKEN"],
+    "environment": "development" if DEBUG else "production",
+    "root": BASE_DIR,
+}
+
+rollbar.init(**ROLLBAR)

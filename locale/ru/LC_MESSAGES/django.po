@@ -24,9 +24,12 @@ msgstr ""
 #: task_manager/templates/labels/label_list.html:17
 #: task_manager/templates/statuses/status_list.html:17
 #: task_manager/templates/tasks/task_list.html:33
-#: task_manager/templates/users/user_list.html:16
 msgid "Name"
 msgstr "Имя"
+
+#: task_manager/templates/users/user_list.html:16
+msgid "Username"
+msgstr "Имя пользователя"
 
 #: task_manager/labels/models.py:7 task_manager/statuses/models.py:7
 #: task_manager/tasks/models.py:16 task_manager/templates/tasks/detail.html:31
@@ -293,7 +296,7 @@ msgstr "Вход"
 
 #: task_manager/templates/users/login.html:18
 msgid "ToLogin"
-msgstr ""
+msgstr "Войти"
 
 #: task_manager/templates/users/register.html:19
 msgid "Register"
