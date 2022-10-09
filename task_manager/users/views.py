@@ -31,8 +31,6 @@ class SignUpView(SuccessMessageMixin, CreateView):
 
 class LoginUserView(SuccessMessageMixin, LoginView):
     template_name = "users/login.html"
-    redirect_authenticated_user = True
-    success_url = reverse_lazy("index")
     success_message = _("You are logged in")
 
 
