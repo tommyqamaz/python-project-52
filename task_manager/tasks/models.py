@@ -28,7 +28,9 @@ class Task(models.Model):
         Status, verbose_name=_("Status"), on_delete=models.PROTECT, null=False
     )
 
-    label = models.ManyToManyField(Label, verbose_name=_("Label"), through="TaskLabels")
+    label = models.ManyToManyField(
+        Label, verbose_name=_("Labels"), through="TaskLabels"
+    )
 
     class Meta(object):
         verbose_name = "task"
