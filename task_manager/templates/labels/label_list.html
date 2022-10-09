@@ -8,8 +8,8 @@
     {% bootstrap_messages %}
 
     <h1 class="mt-1">{% translate "Labels" %}</h1>
-    <a href="{% url 'labels:create_label' %}">{% translate 'Create status' %}</a>
-    {% if status_list %}
+    <a href="{% url 'labels:create_label' %}">{% translate 'Create label' %}</a>
+    {% if label_list %}
     <table class="table table-striped">
         <thead>
             <tr>
@@ -36,8 +36,6 @@
     </table>
     {% else %}
     <p>{% translate "There are no labels." %}
-        <br>
-        <a href="{% url 'labels:create_label' %}">{% translate 'Create label' %}</a>
     </p>
     {% endif %}
     {% endblock %}

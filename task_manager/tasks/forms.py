@@ -15,5 +15,5 @@ class CreateTaskForm(ModelForm):
             "description",
             "status",
             "executor",
-            # "labels",
+            "labels",
         )
