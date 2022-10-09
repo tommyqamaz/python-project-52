@@ -1,4 +1,3 @@
-from distutils.command.config import LANG_EXT
 from django import forms
 from .models import Label
 
