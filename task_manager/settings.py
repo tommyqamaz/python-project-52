@@ -152,11 +152,11 @@ AUTH_USER_MODEL = "users.MyUser"
 
 LOCALE_PATHS = (os.path.join(BASE_DIR, "locale"),)
 
-if not IS_CI:
-    ROLLBAR = {
-        "access_token": os.environ["ROLLBAR_TOKEN"],
-        "environment": "development" if DEBUG else "production",
-        "root": BASE_DIR,
-    }
+# if not IS_CI:
+#     ROLLBAR = {
+#         "access_token": os.environ["ROLLBAR_TOKEN"],
+#         "environment": "development" if DEBUG else "production",
+#         "root": BASE_DIR,
+#     }
 
-    rollbar.init(**ROLLBAR)
+#     rollbar.init(**ROLLBAR)
