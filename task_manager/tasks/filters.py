@@ -12,6 +12,7 @@ class TaskFilter(django_filters.FilterSet):
     labels = ModelChoiceFilter(
         field_name="label",
         queryset=Label.objects.all(),
+        label=_("Label"),
     )
     self_tasks = BooleanFilter(
         method="filter_tasks",

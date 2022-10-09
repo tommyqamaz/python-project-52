@@ -49,7 +49,7 @@
                 <td>{{ task.author }}</td>
                 <td>{{ task.status }}</td>
                 <td>{{ task.executor }}</td>
-                <td>{{ task.created_at }}</td>
+                <td>{{ task.created_at|date:"d.m.Y H:i" }}</td>
                 <td>
                     <a href="{% url 'tasks:update_task' task.pk %}">{% translate 'Update' %}</a>
                     <br>
