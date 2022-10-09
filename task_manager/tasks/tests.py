@@ -1,23 +1,26 @@
 from django.test import TestCase
 from task_manager.users.models import MyUser
 from task_manager.statuses.models import Status
+from task_manager.labels.models import Label
 from .models import Task
 from django.urls import reverse
 
 
 class TaskTest(TestCase):
-    fixtures = ["user.json", "status.json", "task.json"]
+    fixtures = ["user.json", "status.json", "task.json", "label.json"]
 
     def setUp(self):
         self.user = MyUser.objects.last()
         self.task = Task.objects.last()
         self.status = Status.objects.last()
+        self.label = Label.objects.last()
         self.client.force_login(self.user)
 
     def test_setup(self):
         self.assertEqual(self.task.pk, 77)
         self.assertEqual(self.user.pk, 777)
         self.assertEqual(self.status.pk, 100)
+        self.assertEqual(self.label.pk, 1)
 
     def test_unauthorized(self):
         self.client.logout()
@@ -40,6 +43,7 @@ class TaskTest(TestCase):
             "description": "description for task_test2",
             "status": self.status.pk,
             "executor": self.user.pk,
+            "label": self.label.pk,
         }
 
         response = self.client.post(reverse("tasks:create_task"), new_task_create_data)
@@ -52,6 +56,7 @@ class TaskTest(TestCase):
         self.assertEqual(task.status.name, "status_test")
         self.assertEqual(task.executor.username, "username_test")
         self.assertEqual(task.author.username, "username_test")
+        self.assertEqual(task.label.all()[0].name, "label_test")
 
     def test_delete_task(self):
         response = self.client.get(
@@ -74,11 +79,14 @@ class TaskTest(TestCase):
             password="secret",
         )
 
+        new_label = Label.objects.create(name="new")
+
         update_task_create_data = {
             "name": "name_update2",
             "description": "description for task_update2",
             "status": self.status.pk,
             "executor": new_user.pk,
+            "label": {self.label.pk, new_label.pk},
         }
 
         response = self.client.get(
@@ -101,6 +109,9 @@ class TaskTest(TestCase):
         self.assertEqual(task.author.username, "username_test")
 
         self.assertEqual(task.executor.pk, new_user.pk)
+
+        self.assertEqual(task.label.last().name, "new")
+        self.assertEqual(task.label.count(), 2)
 
     def test_detail_task(self):
         response = self.client.get(
