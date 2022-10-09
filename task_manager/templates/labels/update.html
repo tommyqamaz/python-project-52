@@ -10,13 +10,13 @@
 <div class="container" style="width: 60%; color: black">
     <div class="card bg-light my-5">
         <div class="card-header">
-            <h3>{% translate "Status creation" %}</h3>
+            <h3>{% translate 'Label update' %}</h3>
         </div>
         <div class="card-body">
             <form class="form" method="post">
                 {% csrf_token %}
                 {% bootstrap_form form %}
-                <button class="btn btn-primary" type="submit">{% translate 'Create' %}</button>
+                <button class="btn btn-primary" type="submit">{% trans 'Update' %}</button>
             </form>
         </div>
     </div>
