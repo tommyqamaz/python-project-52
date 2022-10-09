@@ -13,6 +13,9 @@ django-bootstrap4==22.2 ; python_version >= "3.9" and python_version < "4.0" \
 django-extensions==3.2.1 ; python_version >= "3.9" and python_version < "4.0" \
     --hash=sha256:2a4f4d757be2563cd1ff7cfdf2e57468f5f931cc88b23cf82ca75717aae504a4 \
     --hash=sha256:421464be390289513f86cb5e18eb43e5dc1de8b4c27ba9faa3b91261b0d67e09
+django-filter==22.1 ; python_version >= "3.9" and python_version < "4.0" \
+    --hash=sha256:ed429e34760127e3520a67f415bec4c905d4649fbe45d0d6da37e6ff5e0287eb \
+    --hash=sha256:ed473b76e84f7e83b2511bb2050c3efb36d135207d0128dfe3ae4b36e3594ba5
 django==4.1.1 ; python_version >= "3.9" and python_version < "4.0" \
     --hash=sha256:a153ffd5143bf26a877bfae2f4ec736ebd8924a46600ca089ad96b54a1d4e28e \
     --hash=sha256:acb21fac9275f9972d81c7caf5761a89ec3ea25fe74545dd26b8a48cb3a0203e
