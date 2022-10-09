@@ -14,7 +14,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 IS_HEROKU = "DYNO" in os.environ
-# IS_CI = "CI" in os.environ
+IS_CI = "CI" in os.environ
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
@@ -152,10 +152,11 @@ AUTH_USER_MODEL = "users.MyUser"
 
 LOCALE_PATHS = (os.path.join(BASE_DIR, "locale"),)
 
-ROLLBAR = {
-    "access_token": os.environ["ROLLBAR_TOKEN"],
-    "environment": "development" if DEBUG else "production",
-    "root": BASE_DIR,
-}
+if not IS_CI:
+    ROLLBAR = {
+        "access_token": os.environ["ROLLBAR_TOKEN"],
+        "environment": "development" if DEBUG else "production",
+        "root": BASE_DIR,
+    }
 
-rollbar.init(**ROLLBAR)
+    rollbar.init(**ROLLBAR)
