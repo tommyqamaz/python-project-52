@@ -2,8 +2,16 @@ from django.test import TestCase
 from task_manager.users.models import MyUser
 from task_manager.statuses.models import Status
 from django.urls import reverse
+from django import test
 
 
+@test.modify_settings(
+    MIDDLEWARE={
+        "remove": [
+            "rollbar.contrib.django.middleware.RollbarNotifierMiddleware",
+        ]
+    }
+)
 class StatusesTest(TestCase):
     def setUp(self):
         self.user = MyUser.objects.create_user(

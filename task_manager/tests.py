@@ -1,8 +1,16 @@
 from django.test import TestCase
 from django.contrib.auth import authenticate
 from task_manager.users.models import MyUser
+from django import test
 
 
+@test.modify_settings(
+    MIDDLEWARE={
+        "remove": [
+            "rollbar.contrib.django.middleware.RollbarNotifierMiddleware",
+        ]
+    }
+)
 class IndexTest(TestCase):
     def setUp(self):
         self.user = MyUser.objects.create_user(

@@ -19,7 +19,7 @@ IS_HEROKU = "DYNO" in os.environ
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ["DJANGO_KEY"]
+SECRET_KEY = os.environ["SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
 if not IS_HEROKU:
@@ -30,7 +30,7 @@ else:
 if IS_HEROKU:
     ALLOWED_HOSTS = ["*"]
 else:
-    ALLOWED_HOSTS = ["127.0.0.1", "testserver"]
+    ALLOWED_HOSTS = ["127.0.0.1", "testserver", "webserver"]
 
 
 # Application definition
@@ -152,10 +152,12 @@ AUTH_USER_MODEL = "users.MyUser"
 
 LOCALE_PATHS = (os.path.join(BASE_DIR, "locale"),)
 
-ROLLBAR = {
-    "access_token": os.environ["ROLLBAR_TOKEN"],
-    "environment": "development" if DEBUG else "production",
-    "root": BASE_DIR,
-}
 
-rollbar.init(**ROLLBAR)
+if IS_HEROKU:
+    ROLLBAR = {
+        "access_token": os.environ["ROLLBAR_TOKEN"],
+        "environment": "development" if DEBUG else "production",
+        "root": BASE_DIR,
+    }
+
+    rollbar.init(**ROLLBAR)

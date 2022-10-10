@@ -4,8 +4,16 @@ from task_manager.statuses.models import Status
 from task_manager.labels.models import Label
 from .models import Task
 from django.urls import reverse
+from django import test
 
 
+@test.modify_settings(
+    MIDDLEWARE={
+        "remove": [
+            "rollbar.contrib.django.middleware.RollbarNotifierMiddleware",
+        ]
+    }
+)
 class TaskTest(TestCase):
     fixtures = ["user.json", "status.json", "task.json", "label.json"]
 
