@@ -328,7 +328,7 @@ msgstr "Фамилия"
 
 #: task_manager/users/views.py:29
 msgid "Your profile was successfully created"
-msgstr "Профиль успешно создан"
+msgstr "Пользователь успешно зарегистрирован"
 
 #: task_manager/users/views.py:36
 msgid "You are logged in"
