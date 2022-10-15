@@ -24,13 +24,16 @@ SECRET_KEY = os.environ["SECRET_KEY"]
 # SECURITY WARNING: don't run with debug turned on in production!
 if not IS_HEROKU:
     DEBUG = True
+    ALLOWED_HOSTS = ["127.0.0.1", "testserver", "webserver"]
 else:
     DEBUG = False
-
-if IS_HEROKU:
     ALLOWED_HOSTS = ["*"]
-else:
-    ALLOWED_HOSTS = ["127.0.0.1", "testserver", "webserver"]
+    ROLLBAR = {
+        "access_token": os.environ["ROLLBAR_TOKEN"],
+        "environment": "development" if DEBUG else "production",
+        "root": BASE_DIR,
+    }
+    rollbar.init(**ROLLBAR)
 
 
 # Application definition
@@ -151,13 +154,3 @@ AUTH_USER_MODEL = "users.MyUser"
 
 
 LOCALE_PATHS = (os.path.join(BASE_DIR, "locale"),)
-
-
-if IS_HEROKU:
-    ROLLBAR = {
-        "access_token": os.environ["ROLLBAR_TOKEN"],
-        "environment": "development" if DEBUG else "production",
-        "root": BASE_DIR,
-    }
-
-    rollbar.init(**ROLLBAR)
