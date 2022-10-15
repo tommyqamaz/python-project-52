@@ -25,7 +25,7 @@ class TaskListView(LoginRequiredMixin, FilterView):
 
 class CreatTaskView(SuccessMessageMixin, LoginRequiredMixin, CreateView):
     template_name = "tasks/create.html"
-    success_url = reverse_lazy("index")
+    success_url = reverse_lazy("tasks:task_list")
     form_class = CreateTaskForm
     success_message = _("Task created successfully")
 
