@@ -43,7 +43,7 @@ msgstr "Метка успешно создана"
 
 #: task_manager/labels/views.py:30
 msgid "Label updated successfully"
-msgstr "Метка успешно обновлена"
+msgstr "Метка успешно изменена"
 
 #: task_manager/labels/views.py:39
 msgid "Label deleted successfully"
@@ -109,7 +109,7 @@ msgstr "Задача успешно удалена"
 
 #: task_manager/tasks/views.py:58
 msgid "Task updated successfully"
-msgstr "Задача успешно обновлена"
+msgstr "Задача успешно изменена"
 
 #: task_manager/templates/labels/create.html:6
 #: task_manager/templates/labels/update.html:6
@@ -340,7 +340,7 @@ msgstr "Вы разлогинены"
 
 #: task_manager/users/views.py:53
 msgid "The user has been successfully updated"
-msgstr "Пользователь успешно обновлён"
+msgstr "Пользователь успешно изменён"
 
 #: task_manager/users/views.py:62
 msgid "You don't have the rights to change another user"
