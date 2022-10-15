@@ -17,7 +17,7 @@ class LabelView(ListView):
 
 class CreateLabelView(SuccessMessageMixin, CreateView):
     template_name = "labels/create.html"
-    success_url = reverse_lazy("index")
+    success_url = reverse_lazy("labels:label_list")
     form_class = CreateLabelForm
     success_message = _("Label created successfully")
 

@@ -17,7 +17,7 @@ class StatusView(ListView):
 
 class CreateStatusView(SuccessMessageMixin, CreateView):
     template_name = "statuses/create.html"
-    success_url = reverse_lazy("index")
+    success_url = reverse_lazy("statuses:status_list")
     form_class = CreateStatusForm
     success_message = _("Status created successfully")
 
