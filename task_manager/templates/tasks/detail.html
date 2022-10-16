@@ -34,8 +34,8 @@
                 <div class="row p-1">
                     <div class="col">{% translate "Labels" %}</div>
                     <ul class="col p1">
-                        {% if task.label %}
-                        {% for label in task.label.all %}
+                        {% if task.labels %}
+                        {% for label in task.labels.all %}
                         <li>{{ label }}</li>
                         {% endfor %}
                         {% else %}
