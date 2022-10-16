@@ -56,5 +56,5 @@ class UpdateTaskView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     template_name = "tasks/update.html"
     form_class = CreateTaskForm
     success_message = _("Task updated successfully")
-    login_url = reverse_lazy("tasks:task_list")
-    redirect_field_name = None
+    # login_url = reverse_lazy("tasks:task_list")
+    # redirect_field_name = None
