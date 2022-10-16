@@ -6,51 +6,50 @@ from task_manager.labels.models import Label
 
 
 class Task(models.Model):
-    author = models.ForeignKey(
-        MyUser,
-        on_delete=models.PROTECT,
-        null=False,
-        related_name="author",
-        verbose_name=_("Author"),
-    )
-    created_at = models.DateTimeField(_("Creation date"), auto_now_add=True)
-
     name = models.CharField(
-        _("Name"),
-        max_length=40,
-        unique=True,
+        verbose_name="Имя",
+        max_length=150,
         null=False,
         blank=False,
+        unique=True,
     )
-    description = models.CharField(
-        _("Description"),
-        max_length=256,
+    description = models.TextField(
+        verbose_name="Описание",
         blank=True,
     )
+    status = models.ForeignKey(Status, on_delete=models.PROTECT, verbose_name="Статус")
     executor = models.ForeignKey(
         MyUser,
-        verbose_name=_("Executor"),
-        on_delete=models.PROTECT,
+        on_delete=models.CASCADE,
+        blank=True,
         null=True,
-        blank=True,
-        related_name="executor",
+        verbose_name="Исполнитель",
+        related_name="executors",
     )
-    status = models.ForeignKey(
-        Status, verbose_name=_("Status"), on_delete=models.PROTECT, null=False
+    author = models.ForeignKey(
+        MyUser,
+        on_delete=models.CASCADE,
+        verbose_name="Автор",
+        related_name="authors",
     )
-
-    label = models.ManyToManyField(
+    labels = models.ManyToManyField(
         Label,
-        verbose_name=_("Labels"),
-        through="TaskLabels",
         blank=True,
+        verbose_name="Метки",
+        related_name="labels",
+        through="TaskLabels",
     )
-
-    class Meta(object):
-        verbose_name = "task"
+    created_at = models.DateTimeField(
+        verbose_name="Дата создания",
+        auto_now_add=True,
+    )
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name = "Task"
+        verbose_name_plural = "Tasks"
 
 
 class TaskLabels(models.Model):
