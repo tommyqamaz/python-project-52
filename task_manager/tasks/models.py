@@ -15,13 +15,24 @@ class Task(models.Model):
     )
     created_at = models.DateTimeField(_("Creation date"), auto_now_add=True)
 
-    name = models.CharField(_("Name"), max_length=40, unique=True)
-    description = models.CharField(_("Description"), max_length=256)
+    name = models.CharField(
+        _("Name"),
+        max_length=40,
+        unique=True,
+        null=False,
+        blank=False,
+    )
+    description = models.CharField(
+        _("Description"),
+        max_length=256,
+        blank=True,
+    )
     executor = models.ForeignKey(
         MyUser,
         verbose_name=_("Executor"),
         on_delete=models.PROTECT,
         null=True,
+        blank=True,
         related_name="executor",
     )
     status = models.ForeignKey(
@@ -29,7 +40,10 @@ class Task(models.Model):
     )
 
     label = models.ManyToManyField(
-        Label, verbose_name=_("Labels"), through="TaskLabels"
+        Label,
+        verbose_name=_("Labels"),
+        through="TaskLabels",
+        blank=True,
     )
 
     class Meta(object):
