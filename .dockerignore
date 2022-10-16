@@ -1,0 +1,9 @@
+Procfile
+requirements.txt
+runtime.txt
+.venv
+.git
+.gitignore
+coverage.xml
+.pytest_cache
+.github

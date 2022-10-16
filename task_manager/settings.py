@@ -24,7 +24,7 @@ SECRET_KEY = os.environ["SECRET_KEY"]
 # SECURITY WARNING: don't run with debug turned on in production!
 if not IS_HEROKU:
     DEBUG = True
-    ALLOWED_HOSTS = ["127.0.0.1", "testserver", "webserver"]
+    ALLOWED_HOSTS = ["127.0.0.1", "testserver", "webserver", "localhost"]
 else:
     DEBUG = False
     ALLOWED_HOSTS = ["*"]
