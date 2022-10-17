@@ -42,3 +42,7 @@ make run
 - bootstrap4
 - black, flake8
 ## Screenshots
+![index scrn](/images/main.png "index")
+![register scrn](/images/register.png "register")
+![tasks scrn](/images/tasks.png "tasks")
+![create_task scrn](/images/create_task.png "create task")
