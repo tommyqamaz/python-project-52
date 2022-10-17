@@ -5,15 +5,19 @@
 
 {% block content %}
 <div class="mt-4">
-    {% bootstrap_messages %}
 
-    <h1 class="mt-1"> {% translate "Main page." %}</h1>
+    <main role="main" class="inner cover my-5 mx-auto text-center" style="color: black; width: 50%;">
+        {% bootstrap_messages %}
+        <h1 class="cover-heading">{% translate 'This is Task Manager'%}</h1>
+        <p class="lead">{% translate 'Explanation' %}</p>
+        {% if not user.is_authenticated %}
+        <p class="lead">{% translate 'ForUnknownUsers' %}</p>
+        <p class="lead">
+            <a href="{% url 'login' %}" class="btn btn-lg btn-secondary">{% trans 'Registration' %}</a>
+        </p>
+        {% endif %}
+    </main>
 
-    {% if user.is_authenticated %}
-    Hi {{ user.get_full_name }}!
-    {% else %}
-    <p>{% translate "You are not logged in." %}</p>
-    <a href="{% url 'login' %}">{% translate "Log In" %}</a>
-    {% endif %}
+
 </div>
 {% endblock %}
