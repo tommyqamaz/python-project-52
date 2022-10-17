@@ -15,6 +15,24 @@ Is the process of managing a task through its life cycle. It involves planning, 
 - Deployed at Heroku (until November 29 2022 (free dyno expired))
 ## Usage
 Follow the [link](https://s777s.herokuapp.com/), register and enjoy
+## Installation
+1. `git clone git@github.com:tommyqamaz/task-manager.git`
+2. Create .env file with the following contents:
+```
+SECRET_KEY= ...# your django key here (len=50)
+DATABASE_URL=sqlite:///db.sqlite3 # sqlite3 for example
+ROLLBAR_TOKEN= ... # Rollbar token for error tracking
+```
+3.a Use docker
+```
+docker build --tag task_manager:latest .
+docker run -itd -p 8000:8000 task_manager
+```
+3.b Use poetry with python >= 3.8.13
+```
+make setup
+make run
+```
 ## Technologies
 - Django, Python
 - Error tracking with Rollbar
@@ -23,3 +41,4 @@ Follow the [link](https://s777s.herokuapp.com/), register and enjoy
 - Heroku, gunicorn
 - bootstrap4
 - black, flake8
+## Screenshots
